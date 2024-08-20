@@ -1,4 +1,6 @@
-﻿@{
+﻿@model cascading_dropdown.Models.Entities.Product
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +8,56 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div class="text-center">
+    <h2>Cascading DropDown</h2>
+    <div class="row form-group p-4 border m-2">
+        <div class="col-2">
+            Category
+        </div>
+        <div class="col-4">
+            <select asp-for="CategoryId" class="form-select" id="CategoryId"
+                    asp-items="@ViewBag.Categories">
+                <option disabled selected>----select Category----</option>
+            </select>
+        </div>
+        <div class="col-2">
+            Product
+        </div>
+        <div class="col-4">
+            <select asp-for="Id" class="form-select" id="ProductId">
+                <option disabled selected>----select Product----</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#CategoryId').change(function () {
+                productById();
+            });
+        });
+
+        var productById = function () {
+            $.ajax({
+                url: '@Url.Action("ProductById", "Home")', // Ensure this matches your controller's action
+                type: 'GET',
+                data: {
+                    categoryId: $('#CategoryId').val(), // Correct ID selector
+                },
+                success: function (data) {
+                    $('#ProductId').empty(); // Clear existing options
+                    $('#ProductId').append('<option disabled selected>----select Product----</option>'); // Add placeholder
+                    $.each(data, function (index, item) {
+                        $('#ProductId').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("An error occurred: " + error);
+                }
+            });
+        }
+    </script>
+}

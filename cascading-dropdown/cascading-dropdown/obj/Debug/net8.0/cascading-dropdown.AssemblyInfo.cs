@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cascading-dropdown")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c32d949535d2d7e141899d8e0c8a9f361d45315f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4a60b0fa4970706752a8f135e09aa61dc321c3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("cascading-dropdown")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cascading-dropdown")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
